@@ -3,14 +3,22 @@ import 'package:welcome_to_mars/resources/app_fonts.dart';
 
 class NavItem extends StatelessWidget {
   final String navItemTitle;
-  const NavItem({super.key, required this.navItemTitle});
+  final void Function()? onTap;
+  const NavItem({
+    super.key,
+    required this.navItemTitle,
+    this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      navItemTitle,
-      style: AppFonts.montserratMedium.copyWith(
-        fontSize: 20.0,
+    return GestureDetector(
+      onTap: onTap,
+      child: Text(
+        navItemTitle,
+        style: AppFonts.montserratMedium.copyWith(
+          fontSize: 20.0,
+        ),
       ),
     );
   }

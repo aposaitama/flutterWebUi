@@ -11,7 +11,12 @@ import 'package:welcome_to_mars/widgets/nav_item.dart';
 
 class IntroPage extends StatelessWidget {
   final GlobalKey<ScaffoldState> scaffoldKey;
-  const IntroPage({super.key, required this.scaffoldKey});
+  final Function(String section) onNavItemTap;
+  const IntroPage({
+    super.key,
+    required this.scaffoldKey,
+    required this.onNavItemTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +79,7 @@ class IntroPage extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(width: 20),
-                        const Expanded(
+                        Expanded(
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -85,20 +90,26 @@ class IntroPage extends StatelessWidget {
                                   children: [
                                     NavItem(
                                       navItemTitle: 'Celestial Residences',
+                                      onTap: () =>
+                                          onNavItemTap('Celestial Residences'),
                                     ),
                                     NavItem(
                                       navItemTitle: 'Stellar Circle',
+                                      onTap: () =>
+                                          onNavItemTap('Stellar Circle'),
                                     ),
                                     NavItem(
                                       navItemTitle: 'Archive',
+                                      onTap: () => onNavItemTap('Archive'),
                                     ),
                                     NavItem(
                                       navItemTitle: 'Observatory',
+                                      onTap: () => onNavItemTap('Observatory'),
                                     ),
                                   ],
                                 ),
                               ),
-                              CustomSmallPurpleButton(
+                              const CustomSmallPurpleButton(
                                 buttonTitle: "Login",
                               ),
                             ],
